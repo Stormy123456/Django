@@ -1,0 +1,72 @@
+{% extends 'regis_layouts.html' %}
+{% load static %}
+
+{% block content %}
+<script type="text/javascript">
+    function Preview(ele){
+        $('#img').attr('src', ele.value);
+        if (ele.files && ele.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+            }
+        reader.readAsDataURL(ele.files[0]);
+        }
+    }
+</script>
+    <br>
+    <div class="table-responsive">
+        <h2>สมัครสมาชิกผู้ใช้งาน</h2>
+        <form action="{% url 'registerNewdata' %}" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="col-sm-6">
+                <label for="name">Username</label>
+                <input type="text" class="form-control" name="user_username" id="user_username" placeholder="Username" maxlength="20" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">Password</label>
+                <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Password" maxlength="20" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">คำนำหน้า</label>
+                <select class="form-control" name="user_prefix" id="user_prefix" required=True>
+                 <option value="นาย">นาย</option>
+                 <option value="นาง">นาง</option>
+                 <option value="นางสาว">นางสาว</option>
+                 </select>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">ชื่อ</label>
+                <input type="text" class="form-control" name="user_fname" id="user_fname" placeholder="ชื่อจริง" maxlength="20" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">นามสกุล</label>
+                <input type="text" class="form-control" name="user_lname" id="user_lname" placeholder="นามสกุล" maxlength="20" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">รหัสประจำตัวประชาชน</label>
+                <input type="text" class="form-control" name="user_identification_code" id="user_identification_code" placeholder="รหัสประจำตัวประชาชน" minlength="13" maxlength="13" pattern="[0-9]{1,}" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">วัน/เดือน/ปีเกิด</label>
+                <input type="date" class="form-control" name="user_bdate" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="image">รูปที่เลือก</label><br>
+                <img id="img" style="width: 120px; height: 140px;"/>
+            </div>
+            <div class="col-sm-6">
+                <label for="image">รูป</label>
+                <input type="file" class="form-control"  name="user_image" id="user_image" OnChange="Preview(this)" accept="image/x-png,image/glf,image/jpeg" required=True>
+                <img id="blah" src="{{data.user_image.url}}" class="img-thumbnail" />
+            </div>
+            <br>
+            <button type="submit" name="submit" class="btn btn-success">ตกลง</button>
+            <button type="button" class="btn btn-danger "><a href="/login"><font color=white>ยกเลิก</font></a></button>
+            <br>
+            -----------------------
+        </form>
+    </div>
+
+
+{% endblock %}
