@@ -15,6 +15,16 @@
     }
 </script>
     <br>
+    <div id="content">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert2">
+            <span class="closebtn2" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>{{ message }}</strong>
+          </div>
+        {% endfor %}
+      {% endif %}
+      </div>
     <div class="table-responsive">
         <h2>แก้ไขข้อมูลพนักงาน</h2>
         {% for data in result %}
@@ -23,11 +33,11 @@
             <input type="hidden" value="{{data.id}}" name="id">
             <div class="col-sm-6">
                 <label for="name">Username</label>
-                <input type="text" class="form-control" name="emp_username" id="emp_username" placeholder="Username" value={{data.emp_username}} maxlength="20" required=True>
+                <input type="text" class="form-control" name="emp_username" id="emp_username" value={{data.emp_username}} maxlength="20" required=True placeholder="Username">
             </div>
             <div class="col-sm-6">
                 <label for="name">Password</label>
-                <input type="password" class="form-control" name="emp_password" id="emp_password" placeholder="Password" value={{data.emp_password}} maxlength="20" required=True>
+                <input type="password" class="form-control" name="emp_password" id="emp_password"  value={{data.emp_password}} maxlength="20" required=True placeholder="Password">
             </div>
             <div class="col-sm-6">
                 <label for="name">คำนำหน้า</label>

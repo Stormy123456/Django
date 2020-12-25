@@ -21,16 +21,20 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
+    path('index/',views.index),
     path('employeeAdd/',views.employeeAdd),
     path('employeeAddnewdata/',views.employeeAddnewdata,name='employeeAddnewdata'),
     path('employeeBoard/',views.employeeBoard),
     path('employeeEdit/',views.employeeEdit,name='employeeEdit'),
     path('employeeUpdate/',views.employeeUpdate,name='employeeUpdate'),
     path('employeeDelete/',views.employeeDelete,name='employeeDelete'),
-    path('login/',views.login,name='login'),
+    path('',views.login,name='login'),
     path('register/',views.register,name='register'),
     path('registerNewdata/',views.registerNewdata,name='registerNewdata'),
+    path('logincheck/',views.logincheck,name='logincheck'),
+    path('userindex/',views.userindex),
+    path('userconfirm/',views.userconfirm),
+    path('userAddconfirm/',views.userAddconfirm,name='userAddconfirm'),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG :

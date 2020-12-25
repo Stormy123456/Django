@@ -15,6 +15,14 @@
     }
 </script>
     <br>
+    {% if messages %}
+        {% for message in messages %}
+          <div class="alert2">
+            <span class="closebtn2" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>{{ message }}</strong>
+          </div>
+        {% endfor %}
+    {% endif %}
     <div class="table-responsive">
         <h2>สมัครสมาชิกผู้ใช้งาน</h2>
         <form action="{% url 'registerNewdata' %}" method="post" enctype="multipart/form-data" >
@@ -62,7 +70,7 @@
             </div>
             <br>
             <button type="submit" name="submit" class="btn btn-success">ตกลง</button>
-            <button type="button" class="btn btn-danger "><a href="/login"><font color=white>ยกเลิก</font></a></button>
+            <button type="button" class="btn btn-danger "><a href="/"><font color=white>ยกเลิก</font></a></button>
             <br>
             -----------------------
         </form>

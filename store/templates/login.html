@@ -19,22 +19,49 @@
      border:1px solid #ccc;
      background:rgb(243, 232, 206);
     }
+    .alert2 {
+          padding: 20px;
+          background-color: #ee3922;
+          color: white;
+        }
+        
+        .closebtn2 {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        
+        .closebtn2:hover {
+          color: black;
+        }
    </style>
  </head>
  <body>
   <br />
   <div class="container box">
    <h3 align="center">กรุณาเข้าสู่ระบบ</h3><br />
-
-   <form method="post" action="">
+   {% if messages %}
+    {% for message in messages %}
+     <div class="alert2">
+       <span class="closebtn2" onclick="this.parentElement.style.display='none';">&times;</span> 
+       <strong>{{ message }}</strong>
+     </div>
+    {% endfor %}
+   {% endif %}
+   <form method="post" action="{% url 'logincheck' %}">
     {% csrf_token %}
     <div class="form-group">
      <label>Email</label>
-     <input type="username" name="username" class="form-control" />
+     <input type="username" name="username" required=True class="form-control" />
     </div>
     <div class="form-group">
      <label>Password</label>
-     <input type="password" name="password" class="form-control" />
+     <input type="password" name="password" required=True class="form-control" />
     </div>
     <div class="form-group">  
         <input type="submit" name="login" class="btn btn-success" value="Login" />

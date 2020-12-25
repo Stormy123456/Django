@@ -18,14 +18,18 @@ class employee(models.Model,):
    
 
     emp_username=models.CharField(max_length=20,unique=True, error_messages={"unique_error_message": u"This username has already been registered."})
-    emp_password=models.CharField(max_length=20)
+    emp_password=models.CharField(max_length=100)
     emp_prefix=models.CharField(max_length=10)
     emp_fname=models.CharField(max_length=20)
     emp_lname=models.CharField(max_length=20)
     emp_identification_code=models.CharField(max_length=13,unique=True)
     emp_bdate=models.DateTimeField()
     emp_image=models.ImageField(upload_to="employee_image",default="")
-    
+    emp_status_finger=models.BooleanField(default=False)
+    status_login=models.IntegerField()
+    emp_finger1 = models.CharField(max_length=10000,null=True,default="")
+    emp_finger2 = models.CharField(max_length=10000,null=True,default="")
+
 
 class users(models.Model):
 
@@ -40,12 +44,17 @@ class users(models.Model):
             self.id = 'USR%03d' % new_code
         super(users, self).save(force_insert, force_update)
     user_username=models.CharField(max_length=20,unique=True)
-    user_password=models.CharField(max_length=20)
+    user_password=models.CharField(max_length=150)
     user_prefix=models.CharField(max_length=10)
     user_fname=models.CharField(max_length=20)
     user_lname=models.CharField(max_length=20)
     user_identification_code=models.CharField(max_length=13,unique=True)
     user_bdate=models.DateTimeField()
     user_image=models.ImageField(upload_to="user_image",default="")
+    user_status_finger=models.BooleanField(default=False)
+    status_login=models.IntegerField()
+    user_finger1 = models.CharField(max_length=10000,null=True,default="")
+    user_finger2 = models.CharField(max_length=10000,null=True,default="")
+
 
 
