@@ -13,9 +13,9 @@
   {% endfor %}
   {% endif %}
 </div>
-<h1>จัดการข้อมูลพนักงาน</h1>
+<h1>จัดการข้อมูลสาขา</h1>
 <div class="table-responsive">
-  <a href="/employeeAdd" class="btn btn-success">เพิ่มพนักงาน</a>
+  <a href="/majorAdd" class="btn btn-success">เพิ่มข้อมูลสาขา</a>
 </div>
 <form action="" method="get">
   <div class="form-group">
@@ -23,47 +23,42 @@
     <button type="submit" name="submit" class="btn btn-dark"><i class="fa fa-search"></i></button>
   </div>
 </form>
-{% if not empdata %}
+{% if not mjrdata %}
 <div class="alert-danger" role="alert">
-  <p>ไม่มีข้อมูลพนักงาน</p>
+  <p>ไม่มีข้อมูลสาขา</p>
 </div>
 {% else %}
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">รูป</th>
-      <th scope="col">คำนำหน้า</th>
       <th scope="col">ชื่อ</th>
-      <th scope="col">นามสกุล</th>
-      <th scope="col">View</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
-    {% for data in empdata %}
+    {% for data in mjrdata %}
     <tr>
       <th scope="row">{{data.id}}</th>
-      <td><img src="{{data.emp_image.url}}" alt="" width="65px" height="65px"></td>
-      <td>{{data.emp_prefix}}</td>
-      <td>{{data.emp_fname}}</td>
-      <td>{{data.emp_lname}}</td>
-      <td><button class="btn btn-primary" href="" >View</button></td>
+      <td>{{data.mjr_name}}</td>
       <td>
-        <form action="{% url 'employeeEdit' %}" method="get">
+        <form action="{% url 'majorEdit' %}" method="get">
           <input type="hidden" value="{{data.id}}" name="id">
           <button type="submit" class="btn btn-success">Edit</button>
         </form>
       </td>
       <td>
-        <form action="{% url 'employeeDelete' %}" method="get">
+        <form action="{% url 'majorDelete' %}" method="get">
           <input type="hidden" value="{{data.id}}" name="id">
           <button type="submit" class="btn btn-danger" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">Delete</button>
         </form>
       </td>
-      {% endfor %}
+    {% endfor %}
   </tbody>
 </table>
 {% endif %}
 {% endblock %}
+
+
+

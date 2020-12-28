@@ -1,5 +1,9 @@
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
 <nav class="navbar navbar-expand-md navbar-light bg-dark">
-    <a href="/index" class="navbar-brand"><i class="fas fa-shipping-fast text-warning fa-2x"></i></a>
+    <a href="/index" class="navbar-brand"><i class='fab fa-empire' style='font-size:44px;color:red'></i></a>
     <button type="button" class="navbar-toggler bg-light" data-toggle="collapse"
     data-target="#nav" name="button"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse justify-content-between" id="nav">
@@ -9,22 +13,33 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="/employeeBoard">พนักงาน</a>
-          <a class="dropdown-item" href="">ผู้ใช้งานทั่วไป</a>
+          <a class="dropdown-item" href="/userBoard">ผู้ใช้งาน</a>
         </div>
       </li>
         <li class="nav-item dropdown">
           <a class="nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle" href="" data-toggle="dropdown">การจัดการ</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="">ข้อมูลห้อง</a>
-            <a class="dropdown-item" href="">ข้อมูลคณะ</a>
-            <a class="dropdown-item" href="">ข้อมูลสาขา</a>
+            <a class="dropdown-item" href="/facultyBoard">ข้อมูลคณะ</a>
+            <a class="dropdown-item" href="/majorBoard">ข้อมูลสาขา</a>
+            <a class="dropdown-item" href="/typeuserBoard">ข้อมูลประเภทผู้ใช้งาน</a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle" href="" data-toggle="dropdown">ประวัติการจอง</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="">ประวัติการจอง</a>
+          </div>
+        </li>
+    </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link text-light text-uppercase font-weight-bold px-3" href="">
+          <a class="nav-link text-light text-uppercase font-weight-bold px-3" href="/logout">
             Sign Out <i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
-    </ul>
+      </ul>
     </div>
   </nav> 

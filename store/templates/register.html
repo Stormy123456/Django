@@ -52,6 +52,14 @@
                 <input type="text" class="form-control" name="user_lname" id="user_lname" placeholder="นามสกุล" maxlength="20" required=True>
             </div>
             <div class="col-sm-6">
+                <label for="name">ประเภทผู้ใช้</label>
+                <select class="form-control" name="user_type">
+                    {% for type in types %}
+                            <option value="{{type.id}}">{{type.typ_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-6">
                 <label for="name">รหัสประจำตัวประชาชน</label>
                 <input type="text" class="form-control" name="user_identification_code" id="user_identification_code" placeholder="รหัสประจำตัวประชาชน" minlength="13" maxlength="13" pattern="[0-9]{1,}" required=True>
             </div>

@@ -49,12 +49,64 @@ class users(models.Model):
     user_fname=models.CharField(max_length=20)
     user_lname=models.CharField(max_length=20)
     user_identification_code=models.CharField(max_length=13,unique=True)
+    user_type=models.CharField(max_length=20)
     user_bdate=models.DateTimeField()
     user_image=models.ImageField(upload_to="user_image",default="")
     user_status_finger=models.BooleanField(default=False)
     status_login=models.IntegerField()
     user_finger1 = models.CharField(max_length=10000,null=True,default="")
     user_finger2 = models.CharField(max_length=10000,null=True,default="")
+
+class typeuser(models.Model):
+    id = models.CharField(primary_key=True,max_length=20,blank=True, default='')
+    def save(self, force_insert=False, force_update=False):
+        if self.id == "":
+            existing_codes = typeuser.objects.all().order_by('-id')
+            if existing_codes.count() > 0:
+                new_code = int(existing_codes[0].id[3:]) + 1
+            else:
+                new_code = 1
+            self.id = 'TYP%03d' % new_code
+        super(typeuser, self).save(force_insert, force_update)
+    typ_name=models.CharField(max_length=20,unique=True)
+
+class faculty(models.Model):
+    id = models.CharField(primary_key=True,max_length=20,blank=True, default='')
+    def save(self, force_insert=False, force_update=False):
+        if self.id == "":
+            existing_codes = faculty.objects.all().order_by('-id')
+            if existing_codes.count() > 0:
+                new_code = int(existing_codes[0].id[3:]) + 1
+            else:
+                new_code = 1
+            self.id = 'FAC%03d' % new_code
+        super(faculty, self).save(force_insert, force_update)
+    fac_name=models.CharField(max_length=20,unique=True)
+ 
+class major(models.Model):
+    id = models.CharField(primary_key=True,max_length=20,blank=True, default='')
+    def save(self, force_insert=False, force_update=False):
+        if self.id == "":
+            existing_codes = major.objects.all().order_by('-id')
+            if existing_codes.count() > 0:
+                new_code = int(existing_codes[0].id[3:]) + 1
+            else:
+                new_code = 1
+            self.id = 'MJR%03d' % new_code
+        super(major, self).save(force_insert, force_update)
+    mjr_name=models.CharField(max_length=20)
+    # mjr_name_faculty=models.CharField(max_length=20)
+
+class reservation(models.Model):
+    id = models.AutoField(primary_key=True)
+    rev_userid=models.CharField(max_length=20)
+    rev_roomid=models.CharField(max_length=20)
+    rev_date=models.DateTimeField()
+    rev_timestart=models.TimeField() 
+    rev_timestop=models.TimeField()
+    rev_finger1 = models.CharField(max_length=10000,null=True,default="")
+    rev_finger2 = models.CharField(max_length=10000,null=True,default="")
+    
 
 
 

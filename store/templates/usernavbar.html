@@ -1,29 +1,36 @@
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
 <nav class="navbar navbar-expand-md navbar-light bg-dark">
-    <a href="/userindex" class="navbar-brand"><i class="fas fa-shipping-fast text-warning fa-2x"></i></a>
+    <a href="/userindex" class="navbar-brand"><i class='fab fa-jedi-order' style='font-size:45px;color:red'"></i></a>
     <button type="button" class="navbar-toggler bg-light" data-toggle="collapse"
     data-target="#nav" name="button"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse justify-content-between" id="nav">
     <ul class="navbar-nav">
       <li class="nav-item dropdown"><a class="nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle" data-toggle="dropdown">
-        ยืนยันตัวตน <i class="fas fa-user circle"></i>
+        ยืนยันตัวตน <i class="fa fa-thumbs-o-up circle" style="font-size:15px"></i>
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="/userconfirm">ยืนยันนิ้วมือ</a>
         </div>
       </li>
         <li class="nav-item dropdown">
-          <a class="nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle" href="" data-toggle="dropdown">#</a>
+          <a class="nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle" href="" data-toggle="dropdown">การจอง</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="">#</a>
-            <a class="dropdown-item" href="">#</a>
-            <a class="dropdown-item" href="">#</a>
+            <a class="dropdown-item" href="/userReservation">จองห้อง</a>
+            <a class="dropdown-item" href="">ดูตารางการจอง</a>
           </div>
         </li>
+    </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link text-light text-uppercase font-weight-bold px-3" href="">
+          <a class="nav-link text-light text-uppercase font-weight-bold px-3" href="/logout">
             Sign Out <i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
-    </ul>
+      </ul>
     </div>
   </nav> 

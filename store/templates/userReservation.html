@@ -1,0 +1,44 @@
+{% extends 'layouts.html' %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <div id="content">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert2">
+            <span class="closebtn2" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>{{ message }}</strong>
+          </div>
+        {% endfor %}
+      {% endif %}
+      </div>
+    <div class="table-responsive">
+        <br>
+        <h2>จองห้อง</h2>
+        <form action="{% url 'userReservationAdd' %}" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="col-sm-6">
+                <label for="name">เลือกห้อง</label>
+                <input type="text" class="form-control" name="rev_roomid" id="typ_name" placeholder="เลือกห้อง" maxlength="20" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">วันที่</label>
+                <input type="date" class="form-control" name="rev_date" required=True>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">เวลาเริ่มต้น</label>
+                <input type="time" class="form-control" id="rev_timestart" name="rev_timestart"min="09:00" max="18:00" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="name">เวลาสิ้นสุด</label>
+                <input type="time" class="form-control" id="rev_timestop" name="rev_timestop"min="09:00" max="18:00" required>
+            </div>
+            <br>
+            <button type="submit" name="submit" class="btn btn-success">ตกลง</button>
+            <button type="button" class="btn btn-danger"><a href="/typeuserBoard"><font color=white>ยกเลิก</font></a></button>
+            <br>
+            -----------------------
+        </form>
+    </div>
+{% endblock %}
